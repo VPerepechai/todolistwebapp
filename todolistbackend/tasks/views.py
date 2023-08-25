@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Task
+from .serializer import TaskSerializer
+from rest_framework import viewsets
 
-def index(request):
-    return HttpResponse("You're at the tasks index.")
 
+class TaskViewSet(viewsets.ModelViewSet):
+    serializer_class = TaskSerializer
+    queryset = Task.objects.all()
